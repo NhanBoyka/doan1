@@ -1,0 +1,47 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Shop me";
+}
+
+<link rel="stylesheet" href="~/css/style-product-details.css" />
+
+<div class="container">
+    <div class="product-details">
+        <div class="row">
+            <img src="@Model.ImageURL"
+                 alt=""
+                 class="img-product" />
+            <div class="info-products">
+                <span>Sản phẩm</span>
+                <h1 class="title">@Model.Name</h1>
+                <div class="catogory">
+                    <img src="~/lib/tag-solid.svg"
+                         alt=""
+                         class="icon-catogory" />
+                    <p class="desc">Loại: @Model.ProductCategory</p>
+                </div>
+                <p class="price-product">Giá: @Model.Price<span>đ</span></p>
+                <div class="act">
+                    <a class="act-buy" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id">
+                        <img src="~/lib/credit-card-regular.svg"
+                             alt=""
+                             class="icon-atm" />
+                        Mua ngay
+                    </a>
+                    <a asp-controller="Orders" asp-action="AddToCart" asp-route-id="@Model.Id" class="act-add-cart">
+                        Thêm vào giỏ hàng
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row-details">
+            <h2 class="title-details">
+                Thông tin chi tiết sản phẩm
+            </h2>
+            <a class="desc" asp-controller="Brands" asp-action="Details" asp-route-id="@Model.BrandId">Thương hiệu: @Model.Brand.Name</a>
+            <p class="desc">Miêu tả sản phẩm: @Model.Description</p>
+        </div>
+    </div>
+</div>
+

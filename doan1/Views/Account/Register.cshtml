@@ -1,0 +1,44 @@
+﻿@using doan1.Data.ViewModels;
+@model RegisterVM;
+
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<link rel="stylesheet" href="~/css/style-login.css" />
+
+<div class="center-item">
+    <form asp-action="Register" class="login-container">
+        <h2 class="title">Đăng ký</h2>
+        @if(TempData["Error"] != null)
+        {
+            <p class="error">@TempData["Error"]</p>
+        }
+        <div class="form-login">
+            <label asp-for="FullName" class="form-label"></label>
+            <input asp-for="FullName" type="text" class="form-input" />
+            <span asp-validation-for="FullName" class="text-error"></span>
+        </div>
+        <div class="form-login">
+            <label asp-for="EmailAddress" class="form-label"></label>
+            <input asp-for="EmailAddress" type="email" class="form-input" />
+            <span asp-validation-for="EmailAddress" class="text-error"></span>
+        </div>
+        <div class="form-login">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-input" />
+            <span asp-validation-for="Password" class="text-error"></span>
+        </div>
+        <div class="form-login">
+            <label asp-for="ConfirmPassword" class="form-label"></label>
+            <input asp-for="ConfirmPassword" class="form-input" />
+            <span asp-validation-for="ConfirmPassword" class="text-error"></span>
+        </div>
+        <div class="form-login">
+            <input type="submit"
+                   value="Đăng ký"
+                   class="submit-input" />
+            <a class="btn-cancel" asp-controller="Account" asp-action="Login"><p>Đăng nhập tài khoản</p></a>
+        </div>
+    </form>
+</div>

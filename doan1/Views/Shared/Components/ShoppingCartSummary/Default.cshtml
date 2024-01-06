@@ -1,0 +1,23 @@
+﻿@model int;
+
+<link rel="stylesheet" href="~/css/style.css" />
+
+@if (Model > 0)
+{
+    <a asp-controller="Orders" asp-action="ShoppingCart" class="action">
+        <img src="~/lib/cart-shopping-solid.svg"
+             alt=""
+             class="shopping" />
+        Giỏ hàng
+        <input type="number" value="@Model" class="count-item" readonly />
+    </a>
+} else
+{
+    <a asp-controller="Orders" asp-action="ShoppingCart" class="action">
+        <img src="~/lib/cart-shopping-solid.svg"
+             alt=""
+             class="shopping" />
+        Giỏ hàng
+        <input type="number" value="0" class="count-item" readonly />
+    </a>
+}

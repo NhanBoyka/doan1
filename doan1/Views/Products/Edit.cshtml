@@ -1,0 +1,72 @@
+﻿@model NewProductVM
+@using doan1.Data.Enums;
+
+@{
+    ViewData["Title"] = "Thêm sản phẩm";
+}
+
+<link rel="stylesheet" href="~/css/style-create.css" />
+
+<div class="container">
+    <div class="create">
+        <h2 class="title">Sửa sản phẩm</h2>
+        <div class="container-create">
+            <form asp-action="Edit">
+                <div class="bg-previewurl-square">
+                    <img src="~/lib/camera-solid.svg"
+                         alt=""
+                         class="not-preview-square" />
+                    <img class="previewurl-square" id="previewurl" />
+                </div>
+                <div class="form-create">
+                    <label asp-for="ImageURL" class="form-label"></label>
+                    <input asp-for="ImageURL" class="form-input" />
+                    <span asp-validation-for="ImageURL" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-input" />
+                    <span asp-validation-for="Name" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="Price" class="form-label"></label>
+                    <input asp-for="Price" class="form-input" />
+                    <span asp-validation-for="Price" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="Description" class="form-label"></label>
+                    <input asp-for="Description" class="form-input" />
+                    <span asp-validation-for="Description" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="ProductCategory" class="form-label"></label>
+                    <select asp-for="ProductCategory" class="form-input" asp-items="Html.GetEnumSelectList<ProductCategory>()"></select>
+                    <span asp-validation-for="ProductCategory" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="BrandId" class="form-label"></label>
+                    <select asp-for="BrandId" class="form-input" asp-items="ViewBag.Brands"></select>
+                    <span asp-validation-for="BrandId" class="text-error"></span>
+                </div>
+                <div class="act-bottom form-create">
+                    <input type="submit" value="Chỉnh sửa" class="act-input" />
+                    <a class="btn" asp-action="Manage">Xem danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#ImageURL").on("change", function () {
+            var output = document.getElementById('previewurl');
+            output.src = $(this).val();
+        })
+
+        $(document).ready(function () {
+            var output = document.getElementById('previewurl');
+            output.src = $("#ImageURL").val();
+        })
+    </script>
+}

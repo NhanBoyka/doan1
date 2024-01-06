@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Brand>
+
+@{
+    ViewData["Title"] = "Quản lý thương hiệu";
+}
+
+<link rel="stylesheet" href="~/css/style-brand.css" />
+
+<div class="Brand">
+    <div class="container">
+        <h2 class="title">Danh sách thương hiệu</h2>
+        <div class="list-brand">
+            @foreach (var item in Model)
+            {
+                <div class="item-brand">
+                    <div class="bg-logo">
+                        <img src="@item.Logo"
+                             alt=""
+                             class="logo" />
+                    </div>
+                    <h3 class="name">@item.Name</h3>
+                    <div class="action">
+                        <a class="act act-edit" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="act act-details" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="act act-delete" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    @await Html.PartialAsync("_CreateItem", "Brands")
+</div>

@@ -1,0 +1,61 @@
+﻿@using doan1.Data.ViewModels
+@model ShoppingCartVM
+
+@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+
+<link rel="stylesheet" href="~/css/style-cart.css" />
+
+<div class="container">
+    <div class="shoppingCart">
+        <h2 class="title">Giỏ hàng</h2>
+        <div class="cart-flex">
+            <div class="list-shoppingCart">
+                @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+                {
+                    <div class="item-shoppingCart">
+                        <img src="@item.Product.ImageURL"
+                             alt=""
+                             class="img-product" />
+                        <div class="info">
+                            <h2 class="name-product">
+                                @item.Product.Name
+                            </h2>
+                            <p class="category">@item.Product.ProductCategory</p>
+                        </div>
+                        <div class="total-cart-item">
+                            <div class="act-cart">
+                                <a class="act-btn" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart" asp-route-id="@item.Product.Id" ><span>-</span></a>
+                                <input type="number" value="@item.Amount"
+                                       class="act-input"
+                                       readonly />
+                                <a class="act-btn" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Product.Id"><span>+</span></a>
+                            </div>
+                            <p class="price-cart">@(item.Amount*item.Product.Price)đ</p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="cart-total">
+                <h3 class="title-total">Thanh toán</h3>
+                <div class="total-flex">
+                    <p class="total">Tổng giá trị sản phẩm:</p>
+                    <p class="price">@Model.ShoppingCartTotal<span>đ</span></p>
+                </div>
+                <a class="add-product" asp-controller="Products" asp-action="Index">
+                    <img src="~/lib/cart-shopping-solid-primary.svg"
+                         alt=""
+                         class="icon" />
+                    Thêm sản phẩm
+                </a>
+                <a class="add-product-primary-color" asp-action="CompleteOrder">
+                    <img src="~/lib/credit-card-regular.svg"
+                         alt=""
+                         class="icon" />
+                    Mua hàng
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

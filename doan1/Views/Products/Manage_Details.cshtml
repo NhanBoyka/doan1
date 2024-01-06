@@ -1,0 +1,64 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<link rel="stylesheet" href="~/css/style-create.css" />
+
+<div class="container">
+    <div class="create">
+        <h2 class="title">Thông tin chi tiết @Model.Name</h2>
+        <div class="container-create">
+            <div class="bg-previewurl-square">
+                <img src="~/lib/camera-solid.svg"
+                     alt=""
+                     class="not-preview-square" />
+                <img class="previewurl-square" id="previewurl" />
+            </div>
+            <div class="form-create">
+                <label asp-for="ImageURL" class="form-label"></label>
+                <input asp-for="ImageURL" class="form-input" readonly/>
+                <span asp-validation-for="ImageURL" class="text-error"></span>
+            </div>
+            <div class="form-create">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-input" readonly />
+                <span asp-validation-for="Name" class="text-error"></span>
+            </div>
+            <div class="form-create">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" class="form-input" readonly />
+                <span asp-validation-for="Price" class="text-error"></span>
+            </div>
+            <div class="form-create">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description" class="form-input" readonly />
+                <span asp-validation-for="Description" class="text-error"></span>
+            </div>
+            <div class="form-create">
+                <label asp-for="ProductCategory" class="form-label"></label>
+                <input asp-for="ProductCategory" class="form-input" readonly />
+                <span asp-validation-for="ProductCategory" class="text-error"></span>
+            </div>
+            <div class="form-create">
+                <label asp-for="Brand.Name" class="form-label"></label>
+                <input asp-for="Brand.Name" class="form-input" readonly />
+                <span asp-validation-for="Brand.Name" class="text-error"></span>
+            </div>
+            <div class="act-bottom form-create">
+                <a class="btn" asp-action="Edit" asp-route-id="@Model.Id">Chỉnh sửa</a>
+                <a class="btn" asp-action="Manage">Xem danh sách</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('previewurl');
+            output.src = $("#ImageURL").val();
+        })
+    </script>
+}

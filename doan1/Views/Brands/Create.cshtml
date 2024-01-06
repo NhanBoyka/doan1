@@ -1,0 +1,70 @@
+﻿@model Brand
+
+@{
+    ViewData["Title"] = "Thêm thương hiệu";
+}
+
+<link rel="stylesheet" href="~/css/style-create.css" />
+
+<div class="container">
+    <div class="create">
+        <h2 class="title">Thêm thương hiệu mới</h2>
+        <div class="container-create">
+            <form asp-action="Create">
+                <div class="text-error"></div>
+
+                <div class="bg-previewurl">
+                    <img src="~/lib/camera-solid.svg"
+                         alt=""
+                         class="not-preview" />
+                    <img class="previewurl" id="previewurl" />
+                </div>
+                <div class="form-create">
+                    <label asp-for="Logo" class="form-label"></label>
+                    <input asp-for="Logo" class="form-input" />
+                    <span asp-validation-for="Logo" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-input" />
+                    <span asp-validation-for="Name" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="Address" class="form-label"></label>
+                    <input asp-for="Address" class="form-input" />
+                    <span asp-validation-for="Address" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="PhoneNumber" type="number" class="form-input" />
+                    <span asp-validation-for="PhoneNumber" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-input" />
+                    <span asp-validation-for="Email" class="text-error"></span>
+                </div>
+                <div class="form-create">
+                    <label asp-for="Description" class="form-label"></label>
+                    <input asp-for="Description" class="form-input" />
+                    <span asp-validation-for="Description" class="text-error"></span>
+                </div>
+                <div class="act-bottom form-create">
+                    <input type="submit"
+                           value="Thêm"
+                           class="act-input" />
+                    <a class="btn" asp-action="Index">Xem danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#Logo").on("change", function () {
+            var output = document.getElementById('previewurl');
+            output.src = $(this).val();
+        })
+    </script>
+}

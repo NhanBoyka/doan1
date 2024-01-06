@@ -1,0 +1,40 @@
+﻿@model List<Order>
+
+@{
+    ViewData["Title"] = "Danh sách hóa đơn";
+}
+
+<link rel="stylesheet" href="~/css/style-list-order.css" />
+
+<div class="container">
+    <div class="order">
+        <h2 class="heading">Danh sách hóa đơn</h2>
+        <div class="row">
+            <h4 class="title">Mã hóa đơn</h4>
+            <h4 class="title">Sản phẩm</h4>
+            <h4 class="title">Tổng tiền</h4>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <h4 class="title">Khách hàng</h4>
+            }
+        </div>
+        <hr />
+        @foreach (var order in Model)
+        {
+            <div class="row order-item">
+                <p class="info">@order.Id</p>
+                <div class="list-item">
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <p class="info"><span>@item.Amount</span> [@item.Price đ] - @item.Product.Name</p>
+                    }
+                </div>
+                <p class="info">@order.OrderItems.Select(m => m.Product.Price * m.Amount).Sum()đ</p>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")){
+                    <p class="info"> @order.User.FullName </p>
+                }
+            </div>
+            <hr />
+        }
+    </div>
+</div>

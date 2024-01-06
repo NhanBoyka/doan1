@@ -1,0 +1,18 @@
+﻿@inject UserManager<ApplicationUser> UserManager;
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="account">
+        <a class="login" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+        <span>/</span>
+        <a class="sign-in" asp-controller="Account" asp-action="Register">Đăng ký</a>
+    </div>
+}
+else
+{
+    <div class="account">
+        <a style="text-decoration: none;" href="#" class="login">
+            <img src="~/lib/user-solid.svg" />
+            @UserManager.GetUserName(User)</a>
+    </div>
+}

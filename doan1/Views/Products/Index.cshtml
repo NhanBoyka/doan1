@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "San pham";
+}
+
+
+<!-- ***** Header Area End ***** -->
+<!-- container -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content">
+                <!-- ***** Banner Start ***** -->
+                <div class="main-banner">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="header-text">
+                                <h6>Welcome</h6>
+                                <h4><em>LUXURY</em></h4>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ***** Banner End ***** -->
+            <!-- ***** Most Popular Start ***** -->
+            <div class="most-popular">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="heading-section ">
+                            <h4><em>Danh Mục</em> <span class="subtext">Sản Phẩm</span></h4>
+                            <div class="row ">
+
+                                <div class="col-lg-12">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ***** Most Popular End ***** -->
+                <!-- ***** Gaming Library Start ***** -->
+                <div id="SanPham" class="gaming-library">
+                    <div class="col-lg-12">
+                        <div class="heading-section">
+                            <h4><em>Sản Phẩm</em> <span class="subtext">Ưa Chuộng</span></h4>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="item-library">
+                                <ul>
+                                    <li><img src="~/images/1.jpg" alt="" class="templatemo-item"></li>
+                                    <li><h4>Nhẫn Bạc EMERAALD</h4><span>48K Lượt Mua</span></li>
+                                    <li><h4>Xuất Xứ:</h4><span>China</span></li>
+                                    <li><h4>Giá Bán</h4><span>780.000đ</span></li>
+
+                                    <li><div class="main-border-button border-no-active"><a href="#">Thêm Giỏ Hàng</a></div></li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- ***** Gaming Library End ***** -->
+            </div>
+        </div>
+    </div>
+</div>

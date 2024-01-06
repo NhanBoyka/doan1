@@ -1,0 +1,34 @@
+﻿@inject UserManager<ApplicationUser> UserManager;
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <a asp-controller="Products" asp-action="Index" class="atc-right">
+        <img src="~/lib/house-solid.svg"
+             alt=""
+             class="icon" />
+        Trang chủ
+    </a>
+}
+else
+{
+    <a asp-controller="Products" asp-action="Index" class="atc-right">
+        <img src="~/lib/house-solid.svg"
+             alt=""
+             class="icon" />
+        Trang chủ
+    </a>
+    <a asp-controller="Orders" asp-action="Index" class="atc-right">
+        <img src="~/lib/clipboard-solid.svg"
+             alt=""
+             class="icon" />
+        Hóa đơn
+    </a>
+    <form id="logoutForm" asp-controller="Account" asp-action="Logout" class="atc-right">
+        @Html.AntiForgeryToken()
+
+        <button type="submit" >
+            <img src="~/lib/right-from-bracket-solid.svg" alt="" class="icon" />
+            Đăng xuất
+        </button>
+    </form>
+}
